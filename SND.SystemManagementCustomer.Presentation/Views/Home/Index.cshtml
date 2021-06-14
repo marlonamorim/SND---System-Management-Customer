@@ -1,0 +1,105 @@
+﻿@model SND.SystemManagementCustomer.Presentation.Models.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Pesquisa de Cliente</h1>
+<hr>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group row">
+        @Html.LabelFor(x => Model.SearchCustomerViewModel.SelectedResellerCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DropDownListFor(x => Model.SearchCustomerViewModel.SelectedResellerCode, new SelectList(Model.SearchCustomerViewModel.Resellers, "Value", "Text"),
+        htmlAttributes: new { @class = "form-control", id = "Reseller"})
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.SearchCustomerViewModel.CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.EditorFor(model => model.SearchCustomerViewModel.CompanyName, new { htmlAttributes = new { @class = "form-control", @autofocus =
+        "autofocus" } })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.SearchCustomerViewModel.MinPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.EditorFor(model => model.SearchCustomerViewModel.MinPrice, new { htmlAttributes = new { @class = "form-control", @autofocus =
+        "autofocus" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Pesquisar" class="btn btn-primary" />
+        </div>
+    </div>
+
+@if (Model.Customers.Any())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers.First().Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers.First().CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers.First().CNPJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers.First().City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers.First().StatePrefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers.First().OrderQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers.First().Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers.First().Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Customers) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CNPJ)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatePrefix)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+    
+}

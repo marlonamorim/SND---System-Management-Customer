@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SND.SystemManagementCustomer.HttpIntegration\SND.SystemManagementCustomer.HttpIntegration.csproj" />
+    <ProjectReference Include="..\SND.SystemManagementCustomer.Repository\SND.SystemManagementCustomer.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+
+
+</Project>
